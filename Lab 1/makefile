@@ -1,15 +1,13 @@
-CC=g++
-CFLAGS=-o 
-LDFLAGS=
-SOURCES=lab1.cpp
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=main
+SOURCES = lab1.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXECUTABLE = making_ex1
 
-all: $(SOURCES) $(EXECUTABLE)
+making_ex1: $(OBJECTS)
+	g++ -o $(EXECUTABLE) $(OBJECTS)
 
-$(EXECUTABLE): $(OBJECTS)
-		$(CC) $(LDFLAGS) $(OBJECTS) -o $@
-.c.o:
-		$(CC) $(CFLAGS) $< -o $@
+math.o: math.cpp
+	g++ -c math.cpp
+	
 clean:
-		rm -rf $(OBJECTS) $(EXECUTABLE)
+	rm -f $(OBJECTS)
+	rm -f $(EXECUTABLE)

@@ -42,12 +42,13 @@ class mrow {
  */
 class matrix {
  public:
-  // Friend method to allow the osstream to have access to private data to
-  // display
+  // Default constructor to be used by shape object classes
+  matrix();
+
+  // Friend method allows osstream to have access to private data to display
   friend std::ostream& operator<<(std::ostream& os, const matrix& rhs);
 
-  // Friend method to allow the mult operator to have access to private data to
-  // display
+  // Friend method allows mult operator to access private data to display
   friend matrix operator*(const double scale, const matrix& rhs);
 
   // Parameterized constructor for creating matrix - sets all cells to 0

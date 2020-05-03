@@ -1,18 +1,14 @@
 #include "shape.h"
 
-shape::shape(){}
+shape::shape() {}
 
-shape::shape(const shape& s){}
+shape::shape(const shape& s) {}
 
 shape::~shape(){}
 
+std::ostream& shape::out(std::ostream& os) const {}
+
+std::istream& shape::in(std::istream& is) {}
+
 shape& shape::operator=(const unsigned int& color){}
-
-shape shape::draw(GraphicsContext* gc){}
-
-shape shape::clone(){}
-
-std::ostream& operator<<(std::ostream& os, const shape& s) {}
-
-std::istream& operator>>(std::istream& is, const shape& s) {}
 

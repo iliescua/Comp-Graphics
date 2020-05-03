@@ -3,6 +3,19 @@
 #include <cmath>
 #include <string>  // used in exception
 
+// Default constructor used by the shape object classes
+matrix::matrix() {
+  this->rows = 1;
+  this->cols = 1;
+  this->the_matrix = new double*[rows];
+  for (auto i = 0; i < rows; i++) {
+    this->the_matrix[i] = new double[cols];  // Allocates heap space for cols
+    for (auto j = 0; j < cols; j++) {
+      this->the_matrix[i][j] = 0.0;  // Sets all matrix entries to 0.0
+    }
+  }
+}
+
 // Parameterized constructor for matricies
 matrix::matrix(unsigned int rows, unsigned int cols) : rows(rows), cols(cols) {
   if (rows < 1 || cols < 1) {
@@ -104,7 +117,7 @@ matrix matrix::operator*(const matrix& rhs) const {
   return retVal;
 }
 
-// Allows for a matrix to bu multiplied by a value (only works as matrix * val)
+// Allows for a matrix to be multiplied by a value (only works as matrix * val)
 matrix matrix::operator*(const double scale) const {
   matrix retVal(this->rows, this->cols);   // Creates new matrix
   for (auto i = 0; i < this->rows; i++) {  // Does the mult for each cell

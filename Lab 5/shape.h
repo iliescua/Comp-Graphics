@@ -25,27 +25,22 @@ class shape {
   // Destructor to delete heap data
   virtual ~shape();
 
- protected:
-  // Friend function for displaying shape properties
-  friend std::ostream& operator<<(std::ostream& os, shape& s);
-
-  // Friend function for reading in shape properties
-  friend std::istream& operator>>(std::istream& is, shape& s);
-
-  // Set one shapes' attributes equal to anothers' attributes
-  virtual shape& operator=(const unsigned int& color);
-
   // This method is used to create the drawing
-  virtual shape draw(GraphicsContext* gc);
+  // It accepts a gc which contains the algorithms for drawing
+  virtual void draw(GraphicsContext* gc) = 0;
 
   // This is a clone used to make a deep copy of shapes
-  virtual shape clone();
+  virtual shape* clone() = 0;
+
+  // Called to ouput the shape data
+  virtual std::ostream& out(std::ostream& os) const;
+
+  // Called to input the shape data
+  virtual std::istream& in(std::istream& is);
+
+ protected:
+  // Set one shapes' attributes equal to anothers' attributes
+  virtual shape& operator=(const unsigned int& color);
 };
-
-// Operator to display results to console
-std::ostream& operator<<(std::ostream& os, shape& s);
-
-// Operator to read in results
-std::istream& operator>>(std::istream& is, shape& s);
 
 #endif
